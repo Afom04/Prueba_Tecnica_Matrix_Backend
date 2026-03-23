@@ -18,7 +18,7 @@ public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
     @Query("""
     SELECT r FROM Resource r
-    WHERE LOWER(r.name) LIKE LOWER(CONCAT('%', COALESCE(:name, ''), '%'))
+    WHERE r.name ILIKE CONCAT('%', COALESCE(:name, ''), '%')
     AND r.deletedAt IS NULL
 """)
     Page<Resource> search(@Param("name") String name, Pageable pageable);
