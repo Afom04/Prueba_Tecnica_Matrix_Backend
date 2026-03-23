@@ -1,24 +1,58 @@
-# Compiled class file
-*.class
+# Compilados
+target/
+build/
+out/
 
-# Log file
+# Logs
 *.log
 
-# BlueJ files
-*.ctxt
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Archivos de sistema
+.DS_Store
+Thumbs.db
 
-# Package Files #
+# IDEs
+
+## IntelliJ
+.idea/
+*.iml
+
+## Eclipse
+.project
+.classpath
+.settings/
+
+## VS Code
+.vscode/
+
+# Dependencias
+node_modules/
+
+# Archivos generados por Spring Boot
 *.jar
 *.war
-*.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Configuración sensible
+application.properties
+application.yml
+application-*.yml
+application-*.properties
+
+# Archivos de entorno
+.env
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Test outputs
+coverage/
