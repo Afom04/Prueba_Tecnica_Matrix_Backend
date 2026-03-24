@@ -98,10 +98,19 @@ public class RequestServiceImpl implements RequestService {
         }
 
         if (dto.getStatus() != null) {
+            validateStatusTransition(request.getStatus(), dto.getStatus());
             request.setStatus(dto.getStatus());
         }
 
         return RequestMapper.toDTO(requestRepository.save(request));
+    }
+
+    private void validateStatusTransition(RequestStatus current, RequestStatus next) {
+        if (current == next) return;
+
+        if ((current == RequestStatus.APPROVED || current == RequestStatus.REJECTED) && next == RequestStatus.PENDING) {
+            throw new com.matrix.technicaltest.exception.InvalidStatusTransitionException("Cannot revert an APPROVED or REJECTED request back to PENDING");
+        }
     }
 
     // =========================
@@ -112,7 +121,7 @@ public class RequestServiceImpl implements RequestService {
 
         Request request = requestRepository.findById(id)
                 .filter(r -> r.getDeletedAt() == null)
-                .orElseThrow(() -> new RuntimeException("Request not found"));
+                .orElseThrow(() -> new com.matrix.technicaltest.exception.ResourceNotFoundException("Request not found"));
 
         request.setDeletedAt(LocalDateTime.now());
 

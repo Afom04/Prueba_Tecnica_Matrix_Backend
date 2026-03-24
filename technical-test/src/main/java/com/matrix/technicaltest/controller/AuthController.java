@@ -16,10 +16,11 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponseDTO> register(
+    @ResponseStatus(org.springframework.http.HttpStatus.CREATED)
+    public AuthResponseDTO register(
             @RequestBody RegisterRequestDTO request
     ) {
-        return ResponseEntity.ok(authService.register(request));
+        return authService.register(request);
     }
 
     @PostMapping("/login")

@@ -22,6 +22,7 @@ public class RequestController {
     // CREATE
     // =========================
     @PostMapping
+    @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.CREATED)
     public RequestDTO create(@RequestBody @Valid CreateRequestDTO dto) {
         return requestService.create(dto);
     }
@@ -59,10 +60,8 @@ public class RequestController {
         return requestService.update(id, dto);
     }
 
-    // =========================
-    // DELETE (SOFT DELETE)
-    // =========================
     @DeleteMapping("/{id}")
+    @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         requestService.delete(id);
     }

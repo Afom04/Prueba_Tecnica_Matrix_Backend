@@ -17,6 +17,7 @@ public class ResourceController {
     private final ResourceService resourceService;
 
     @PostMapping
+    @ResponseStatus(org.springframework.http.HttpStatus.CREATED)
     public ResourceDTO create(@RequestBody @Valid CreateResourceDTO dto) {
         return resourceService.create(dto);
     }
@@ -44,6 +45,7 @@ public class ResourceController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         resourceService.delete(id);
     }

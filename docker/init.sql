@@ -107,6 +107,6 @@ INSERT INTO users (name, email, password, role)
 VALUES (
     'Admin',
     'admin@test.com',
-    '$2a$10$7QJ8k8X9XxXxXxXxXxXxXeFakeHashReplace', -- Reemplazar con bcrypt real
+    '$$2a$10$cHYnTJg0p45VM6ekVinFAetMxPVD8kQ/N7SxXlBcufX56Y1J9fBh.', 
     'ADMIN'
 );
